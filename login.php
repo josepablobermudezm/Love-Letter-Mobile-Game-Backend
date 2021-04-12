@@ -10,7 +10,8 @@
      mysqli_stmt_execute($statement);
 
      mysqli_stmt_store_result($statement);
-     mysqli_stmt_bind_result($statement,'ssss', $u_id,$u_alias, $u_password, $u_rol);
+     mysqli_stmt_bind_result($statement, 'issssiiiii', $u_id, $u_alias, $u_fechaNacimiento, $u_password, $u_rol, $u_cantidadPartidasJugadas, 
+     $u_cantidadPartidasGanadas, $u_cantidadAmigos, $u_nivel, $u_experiencia);
 
      $response = array();
      $response["success"] = true;
@@ -18,9 +19,14 @@
      while(mysqli_stmt_fetch($statement)){
         $response["success"] = true;
         $response["u_id"] = $u_id;
-        $response["u_alias"] = $u_alias;
+        $response["u_fechaNacimiento"] = $u_fechaNacimiento;
         $response["u_password"] = $u_password;
         $response["u_rol"] = $u_rol;
+        $response["u_cantidadPartidasJugadas"] = $u_rol;
+        $response["u_cantidadPartidasGanadas"] = $u_rol;
+        $response["u_cantidadAmigos"] = $u_rol;
+        $response["u_nivel"] = $u_rol;
+        $response["u_experiencia"] = $u_rol;
      }
 
      echo json_encode($response);

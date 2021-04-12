@@ -5,10 +5,19 @@
     $u_fechaNacimiento = $_POST["u_fechaNacimiento"];
     $u_password = $_POST["u_password"];
     $u_rol = $_POST["u_rol"];
+    $u_cantidadPartidasJugadas = $_POST["u_cantidadPartidasJugadas"];
+    $u_cantidadPartidasGanadas = $_POST["u_cantidadPartidasGanadas"];
+    $u_cantidadAmigos = $_POST["u_cantidadAmigos"];
+    $u_nivel = $_POST["u_nivel"];
+    $u_experiencia = $_POST["u_experiencia"];
 
-    $statement = mysqli_prepare($con, "INSERT INTO tb_usuarios (u_alias, u_fechaNacimiento, u_password, u_rol) VALUES (?, ?, ?)");
+    $statement = mysqli_prepare($con, 
+        "INSERT INTO tb_usuarios (u_alias, u_fechaNacimiento, u_password, u_rol, 
+        u_cantidadPartidasJugadas, u_cantidadPartidasGanadas, u_cantidadAmigos, u_nivel, u_experiencia) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-     mysqli_stmt_bind_param($statement,'ssss', $u_alias, $u_fechaNacimiento, $u_password, $u_rol);
+     mysqli_stmt_bind_param($statement,'ssssiiiii', $u_alias, $u_fechaNacimiento, $u_password, $u_rol, 
+        $u_cantidadPartidasJugadas, $u_cantidadPartidasGanadas, $u_cantidadAmigos, $u_nivel, $u_experiencia);
      mysqli_stmt_execute($statement);
 
      $response = array();
