@@ -1,6 +1,9 @@
 <?php
    $mysqli = mysqli_connect("localhost", "id16561754_root", "Progra4-2020", "id16561754_bd_winadate");
 
+   $response = array();
+   $response["success"] = true;
+
    $u_alias = $_POST["u_alias"];
    $u_fechaNacimiento = $_POST["u_fechaNacimiento"];
    $u_password = $_POST["u_password"];
@@ -18,10 +21,9 @@
 
    mysqli_stmt_bind_param($statement,'ssssiiiii', $u_alias, $u_fechaNacimiento, $u_password, $u_rol, 
       $u_cantidadPartidasJugadas, $u_cantidadPartidasGanadas, $u_cantidadAmigos, $u_nivel, $u_experiencia);
-   mysqli_stmt_execute($statement);
-
-   $response = array();
-   $response["success"] = true;
+   if(!mysqli_stmt_execute($statement)){
+      $response["success"] = false;
+   };
 
    $mysqli->close();
    echo json_encode($response);
