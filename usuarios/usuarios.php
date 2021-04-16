@@ -7,7 +7,7 @@
    if ($result = $mysqli->query($query)) {
       $results["success"] = true;
       while ($row = $result->fetch_assoc()) {
-            $results[] = $row;
+            $results['usuarios'][] = $row;
       }
       $result->free();
    }
