@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/josepablobermudezm/servidor-proyecto-progra-moviles/issues"
   },
-  "homepage": "https://github.com/josepablobermudezm/servidor-proyecto-progra-moviles#readme"
+  "homepage": "https://github.com/josepablobermudezm/servidor-proyecto-progra-moviles#readme",
+  "dependencies": {
+    "websockets": "^0.2.0"
+  }
 }
