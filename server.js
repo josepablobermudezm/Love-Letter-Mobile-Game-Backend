@@ -1,10 +1,12 @@
 const SocketServer = require('websocket').server
 const http = require('http')
 
+const port = process.env.PORT || 3338;
+
 const server = http.createServer((req, res) => {})
 
-server.listen(process.env.PORT || 3000, ()=>{
-    console.log("Listening on port 3000...")
+server.listen(port || 3000, ()=>{
+    console.log(`Listening on http://localhost:${port}/`);
 })
 
 wsServer = new SocketServer({httpServer:server})
