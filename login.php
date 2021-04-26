@@ -2,7 +2,7 @@
    $mysqli = mysqli_connect("fdb20.awardspace.net", "3363332_bdwinadate", "180120Jr@!", "3363332_bdwinadate");
    
    $response = array();
-   $response["success"] = true;
+   $response["success"] = false;
    
    $u_alias = $_POST["u_alias"];
    $u_password = $_POST["u_password"];
