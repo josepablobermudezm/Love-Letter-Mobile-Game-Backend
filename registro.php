@@ -21,7 +21,7 @@
 
    mysqli_stmt_bind_param($statement,'ssssiiiii', $u_alias, $u_fechaNacimiento, $u_password, $u_rol, 
       $u_cantidadPartidasJugadas, $u_cantidadPartidasGanadas, $u_cantidadAmigos, $u_nivel, $u_experiencia);
-   if(!mysqli_stmt_execute($statement)){
+   if(!$statement->execute()){
       $response["success"] = false;
    };
 
