@@ -14,6 +14,14 @@
    $u_nivel = $_POST["u_nivel"];
    $u_experiencia = $_POST["u_experiencia"];
 
+   //Procederemos a hacer una consulta que buscara el alias del usuario
+   $buscarAlias = "SELECT * from tb_usuarios WHERE u_alias='$u_alias'";
+   $resultado = $mysqli->query($buscarAlias);
+   $cantidadFilas = mysqli_num_rows($resultado);
+   if($cantidadFilas == 1) {
+      $response["success"] = false;
+   }
+
    $statement = mysqli_prepare($mysqli, 
       "INSERT INTO tb_usuarios (u_alias, u_fechaNacimiento, u_password, u_rol, 
       u_cantidadPartidasJugadas, u_cantidadPartidasGanadas, u_cantidadAmigos, u_nivel, u_experiencia) 
