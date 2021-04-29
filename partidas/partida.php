@@ -3,14 +3,13 @@
    
    $response = array();
    $response["success"] = true;
-
    $p_cantidadJugadores = intval($_POST["p_cantidadJugadores"]);
    $p_tipo = $_POST["p_tipo"];
    $p_codigo = $_POST["p_codigo"];
    $p_nivelMinimo = intval($_POST["p_nivelMinimo"]);
    $p_fkUsuario = intval($_POST["p_fkUsuario"]);
 
-   $statement = mysqli_prepare($mysqli, "INSERT INTO tb_usuarios (p_cantidadJugadores, p_tipo, p_codigo, 
+   $statement = mysqli_prepare($mysqli, "INSERT INTO tb_partida (p_cantidadJugadores, p_tipo, p_codigo, 
    p_nivelMinimo, p_fkUsuario) VALUES (?, ?, ?, ?, ?)");
 
    mysqli_stmt_bind_param($statement,'issii', $p_cantidadJugadores, $p_tipo, $p_codigo, $p_nivelMinimo, $p_fkUsuario);
