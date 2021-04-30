@@ -8,12 +8,11 @@
    $p_tipo = $_POST["p_tipo"];
    $p_codigo = $_POST["p_codigo"];
    $p_nivelMinimo = intval($_POST["p_nivelMinimo"]);
-   $p_fkUsuario = intval($_POST["p_fkUsuario"]);
 
    $statement = mysqli_prepare($mysqli, "UPDATE tb_partida SET p_cantidadJugadores = ?, p_tipo = ?, p_codigo = ?, 
-   p_nivelMinimo = ?, p_fkUsuario = ? WHERE p_id = ?");
+   p_nivelMinimo = ? WHERE p_id = ?");
 
-   mysqli_stmt_bind_param($statement,'issiii', $p_cantidadJugadores, $p_tipo, $p_codigo, $p_nivelMinimo, $p_fkUsuario, $p_id);
+   mysqli_stmt_bind_param($statement,'issii', $p_cantidadJugadores, $p_tipo, $p_codigo, $p_nivelMinimo, $p_id);
 
    if(!mysqli_stmt_execute($statement)){
       $response["success"] = false;
