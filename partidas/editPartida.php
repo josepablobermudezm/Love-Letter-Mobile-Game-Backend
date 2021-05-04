@@ -3,21 +3,20 @@
    
    $response = array();
    $response["success"] = true;
+   $p_id = intval($_POST["p_id"]);
    $p_cantidadJugadores = intval($_POST["p_cantidadJugadores"]);
    $p_tipo = $_POST["p_tipo"];
    $p_codigo = $_POST["p_codigo"];
    $p_nivelMinimo = intval($_POST["p_nivelMinimo"]);
-   $p_estado = $_POST["p_estado"];
-   $p_fkUsuario = intval($_POST["p_fkUsuario"]);
 
-   $statement = mysqli_prepare($mysqli, "INSERT INTO tb_partida (p_cantidadJugadores, p_tipo, p_codigo, 
-   p_nivelMinimo, p_estado, p_fkUsuario) VALUES (?, ?, ?, ?, ?, ?)");
+   $statement = mysqli_prepare($mysqli, "UPDATE tb_partida SET p_cantidadJugadores = ?, p_tipo = ?, p_codigo = ?, 
+   p_nivelMinimo = ? WHERE p_id = ?");
 
-   mysqli_stmt_bind_param($statement,'issisi', $p_cantidadJugadores, $p_tipo, $p_codigo, $p_nivelMinimo, $p_estado, $p_fkUsuario);
-   if(!$statement->execute()){
+   mysqli_stmt_bind_param($statement,'issii', $p_cantidadJugadores, $p_tipo, $p_codigo, $p_nivelMinimo, $p_id);
+
+   if(!mysqli_stmt_execute($statement)){
       $response["success"] = false;
    };
-
    $mysqli->close();
    echo json_encode($response);
 ?>
