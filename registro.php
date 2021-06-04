@@ -2,17 +2,20 @@
    $mysqli = mysqli_connect("fdb20.awardspace.net", "3363332_bdwinadate", "180120Jr@!", "3363332_bdwinadate");
    
    $response = array();
-   $response["success"] = true;
 
    $u_alias = $_POST["u_alias"];
    $u_fechaNacimiento = $_POST["u_fechaNacimiento"];
    $u_password = $_POST["u_password"];
    $u_rol = $_POST["u_rol"];
+   $u_picture = $_POST["u_picture"];
    $u_cantidadPartidasJugadas = $_POST["u_cantidadPartidasJugadas"];
    $u_cantidadPartidasGanadas = $_POST["u_cantidadPartidasGanadas"];
    $u_cantidadAmigos = $_POST["u_cantidadAmigos"];
    $u_nivel = $_POST["u_nivel"];
    $u_experiencia = $_POST["u_experiencia"];
+
+   $response["success"] = $u_picture;
+   echo json_encode($response);
 
    //Procederemos a hacer una consulta que buscara el alias del usuario
    $buscarAlias = "SELECT * from tb_usuarios WHERE u_alias='$u_alias'";
@@ -23,14 +26,14 @@
    }
 
    $statement = mysqli_prepare($mysqli, 
-      "INSERT INTO tb_usuarios (u_alias, u_fechaNacimiento, u_password, u_rol, 
+      "INSERT INTO tb_usuarios (u_alias, u_fechaNacimiento, u_password, u_rol, u_picture,
       u_cantidadPartidasJugadas, u_cantidadPartidasGanadas, u_cantidadAmigos, u_nivel, u_experiencia) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-   mysqli_stmt_bind_param($statement,'ssssiiiii', $u_alias, $u_fechaNacimiento, $u_password, $u_rol, 
+   mysqli_stmt_bind_param($statement,'sssssiiiii', $u_alias, $u_fechaNacimiento, $u_password, $u_rol, $u_picture,
       $u_cantidadPartidasJugadas, $u_cantidadPartidasGanadas, $u_cantidadAmigos, $u_nivel, $u_experiencia);
    if(!$statement->execute()){
-      $response["success"] = false;
+      $response["success"] = $u_picture;
    };
 
    $mysqli->close();
