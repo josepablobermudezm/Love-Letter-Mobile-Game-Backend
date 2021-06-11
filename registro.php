@@ -14,7 +14,7 @@
    $u_nivel = $_POST["u_nivel"];
    $u_experiencia = $_POST["u_experiencia"];
 
-   $response["success"] = $u_picture;
+   $response["success"] = true;
    echo json_encode($response);
 
    //Procederemos a hacer una consulta que buscara el alias del usuario
@@ -33,7 +33,7 @@
    mysqli_stmt_bind_param($statement,'sssssiiiii', $u_alias, $u_fechaNacimiento, $u_password, $u_rol, $u_picture,
       $u_cantidadPartidasJugadas, $u_cantidadPartidasGanadas, $u_cantidadAmigos, $u_nivel, $u_experiencia);
    if(!$statement->execute()){
-      $response["success"] = $u_picture;
+      $response["success"] = false;
    };
 
    $mysqli->close();
